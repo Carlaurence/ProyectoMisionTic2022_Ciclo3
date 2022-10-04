@@ -1,0 +1,7 @@
+CREATE TABLE Cliente (
+    ID NUMBER, 
+    NAME VARCHAR2(40),
+    EMAIL VARCHAR2(40),
+    AGE NUMBER,
+    PRIMARY KEY(ID)
+);

@@ -1,0 +1,58 @@
+
+
+CREATE TABLE Cliente (
+    ID NUMBER, 
+    NAME VARCHAR2(40),
+    EMAIL VARCHAR2(40),
+    AGE NUMBER,
+    PRIMARY KEY(ID)
+);
+
+
+CREATE TABLE Mensaje (
+    ID NUMBER, 
+    MESSAGETEXT VARCHAR2(4000),
+    PRIMARY KEY(ID)
+);
+
+https://g72138072ee9e29-reto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client
+SELECT * FROM Cliente
+
+BEGIN
+    INSERT INTO Cliente(id, name, email, age) VALUES(:id, :name, :email, :age);
+    :status_code:=201;
+END;
+
+BEGIN
+    UPDATE Cliente SET id=:id, name=:name, email=:email, age=:age WHERE id=:id;
+    :status_code:=201;
+END;
+
+BEGIN
+    DELETE FROM Cliente WHERE id=:id;
+    :status_code:=204;
+END;
+
+https://g72138072ee9e29-reto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client/:id
+SELECT * FROM Cliente WHERE id=:id
+
+https://g72138072ee9e29-reto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/message/message
+SELECT * FROM Mensaje
+
+BEGIN
+    INSERT INTO Mensaje(id, messagetext) VALUES(:id, :messagetext);
+    :status_code:=201;
+END;
+
+BEGIN
+    UPDATE Mensaje SET id=:id, messagetext=:messagetext WHERE id=:id;
+    :status_code:=201;
+END;
+
+BEGIN
+    DELETE FROM Mensaje WHERE id=:id;
+    :status_code:=204;
+END;
+
+https://g72138072ee9e29-reto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/message/message/:id
+SELECT * FROM Mensaje WHERE id=:id
