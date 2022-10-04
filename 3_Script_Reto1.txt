@@ -1,0 +1,36 @@
+1- Creamos la tabla Cabana desde el servicio APEX de Oracle.
+
+CREATE TABLE Cabana (
+    id NUMBER(20) NOT NULL,
+    brand VARCHAR2(20) NULL,
+    rooms NUMBER(20) NULL,
+    category_id NUMBER(20),
+    name VARCHAR2(400)
+);
+
+2- Desplegamos el Modulo de la API Rest, creamos la plantilla cabin y creamos los manejadores 
+GET, POST, PUT y DELETE para la cabla Cabana
+
+GET: 
+SELECT * FROM Cabana ORDER BY ID ASC
+
+POST:
+BEGIN
+    INSERT INTO Cabana(id, brand, rooms, category_id, name) VALUES(:id, :brand, :rooms, :category_id, :name);
+    :status_code:=201;
+END;
+
+PUT:
+BEGIN
+    UPDATE Cabana SET id=:id, brand=:brand, rooms=:rooms, category_id=:category_id, name=:name WHERE id=:id;
+    :status_code:=201;
+END;
+
+DELETE:
+BEGIN
+    DELETE FROM Cabana WHERE id=:id;
+    :status_code:=204;
+END;
+
+GET BY ID:
+SELECT * FROM Cabana WHERE id=:id
